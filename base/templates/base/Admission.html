@@ -24,6 +24,8 @@
                 <th>Room Number</th>
                 <th>Delete</th>
                 <th>Discharge</th>
+                <th>Stay Details</th>
+
             </tr>
         </thead>
         <tbody>
@@ -41,6 +43,12 @@
                     </td>
                     <td >
                         <a href="{% url 'add_discharge' admission.AdmissionID %}">
+                            <i style="color: black; " class="fas fa-plus edit-icon"></i>
+                        </a>
+                    </td>
+
+                    <td >
+                        <a href="{% url 'add_staydetails' admission.AdmissionID %}">
                             <i style="color: black; " class="fas fa-plus edit-icon"></i>
                         </a>
                     </td>

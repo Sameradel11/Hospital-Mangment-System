@@ -35,6 +35,7 @@ urlpatterns = [
     path('add_patient_mobile/<str:pk>',views.add_patient_mobile,name='add_patient_mobile'),
     path('add_admin_treatment/<str:pk>', views.add_admin_tratment,name='add_admin_treatment'),
     path('add_condition_update/<str:pk>', views.add_condition_update,name='add_condition_update'),
-    path('add_meal/<str:pk>', views.add_meal,name='add_meal')
-
+    path('add_meal/<str:pk>', views.add_meal,name='add_meal'),
+    path('add_staydetails/<str:pk>',views.add_staydetails,name='add_staydetails'),
+    path('remove_staydetails/<str:pk>',views.remove_staydetails,name='remove_staydetails')
 ]

@@ -219,6 +219,20 @@ def add_meal(request,pk):
         return  redirect('staydetails')
     return render(request,'base/add_meals.html')
 
+def add_staydetails(request,pk):
+    admission=Admission.objects.filter(AdmissionID=pk)
+    staydetails=StayDetails.objects.create(
+        AdmissionID=admission[0]
+    )
+    staydetails.save()
+    return redirect('staydetails')
+
+def remove_staydetails(request,pk):
+    details=StayDetails.objects.filter(StayDetailsID=pk)
+    details.delete()
+    return redirect('staydetails')
+
+
 #------------------------------Room ---------------------------
 ## Room Crud
 def room(request):
