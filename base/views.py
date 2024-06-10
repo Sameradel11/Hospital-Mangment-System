@@ -138,6 +138,8 @@ def add_appointment(request):
         return redirect('appointment')
     patients=Patient.objects.all()
     doctors=Doctor.objects.all()
+    print(patients)
+    print(doctors)
     context={'patients':patients,"doctors":doctors}
     return render(request,'base/add_appointment.html',context)
 
@@ -244,10 +246,6 @@ def room(request):
 def add_room(request):
     if request.method == "POST":
         available=request.POST.get('availability')
-        if available=="Available":
-            available=True
-        else:
-            available=False
         room = Room.objects.create(
             RoomNumber=request.POST.get('room_number'),
             Type=request.POST.get('room_type'),
@@ -255,12 +253,24 @@ def add_room(request):
         )
         room.save()
         return redirect('room')
+        
     return render(request, 'base/add_room.html')
 
 def remove_room(request, pk):
     room = Room.objects.get(RoomNumber=pk)
     room.delete()
     return redirect('room')
+
+def edit_room(request,pk):
+    room = Room.objects.get(RoomNumber=pk)
+    if request.method=="POST":
+        room.RoomNumber=request.POST.get('room_number')
+        room.Type=request.POST.get('room_type')
+        room.save()
+        return redirect('room')
+    context={"room":room}
+    return render(request,'base/edit_room.html',context)
+
 
 #------------------------------- Treatment ---------------------------
 def treatment(request):
@@ -315,7 +325,9 @@ def add_admission(request,pk):
         )
         admission.save()
         return redirect('admission')
-    return render(request,'base/add_admission.html')
+    rooms=Room.objects.all()
+    context={'rooms':rooms}
+    return render(request,'base/add_admission.html',context)
 
 def remove_admission(request,pk):
     admission=Admission.objects.filter(AdmissionID=pk)

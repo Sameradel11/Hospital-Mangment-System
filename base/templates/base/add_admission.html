@@ -16,7 +16,14 @@
         <input type="text" id="reason" name="reason" required><br>
 
         <label for="" >Room Number: </label>
-        <input type="text" id ='room_number' name="room_number" required />
+        <select id="room-list" name="room" style="margin-bottom: 20px;" required>
+            <datalist id="room-list" name="room" style="margin-bottom: 20px;" required>
+                    
+                    {% for room in rooms  %}
+                        <option value="{{ room }}">
+                    {% endfor %}
+                        
+                </datalist><br>
 
         <input type="submit" value="Add Patient">
     </form>

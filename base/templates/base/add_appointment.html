@@ -13,11 +13,9 @@
         <label for="patient_id">Patient Name:</label>
         <input type="text" id="patientname" name="patient_id" list='patient-list' required/>
         <datalist id="patient-list">
-            <select id="atient-list" name="patient"required >
-                {% for patient in patients %}
-                <option value="{{ patient.Specialization }}">{{ patient.FullName }}</option>
-                {% endfor %}
-            </select>
+            {% for patient in patients %}
+            <option value="{{ patient.FullName }}">
+            {% endfor %}
         </datalist>
 
 
@@ -25,10 +23,11 @@
         <input type="text" id="doctor_name" name="doctor_name" list="doctor-list" required>
         <datalist id="doctor-list">
             {% for doctor in doctors %}
-                <option value="{{ doctor.FullName }}" data-doctor-id="{{ doctor.id }}">{{ doctor.FullName }}</option>
+            <option value="{{ doctor.Name }}">{{ doctor.Specialization }}</option>
             {% endfor %}
         </datalist>
         <input type="submit" value="Submit">
+        
     </form>
 </body>
 </html>

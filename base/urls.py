@@ -38,4 +38,5 @@ urlpatterns = [
     path('add_meal/<str:pk>', views.add_meal,name='add_meal'),
     path('add_staydetails/<str:pk>',views.add_staydetails,name='add_staydetails'),
     path('remove_staydetails/<str:pk>',views.remove_staydetails,name='remove_staydetails')
+    ,path('edit_room/<str:pk>',views.edit_room,name='edit_room')
 ]
