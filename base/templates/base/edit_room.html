@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Patient</title>
+    <link rel="stylesheet" href="{% static 'base/edit_patient.css' %}">
+</head>
+<body>
+    <h2>Edit Patient</h2>
+    <form method="POST" >
+        {% csrf_token %}
+        <label for="room_number">Room Number:</label>
+        <input type="text" id="room_number" name="room_number" value="{{ room.RoomNumber }}" required><br>
+        
+        <label for="room_type">Room Type:</label>
+        <input type="text" id="room_type" name="room_type" value="{{ room.Type }}" required><br>
+        
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
